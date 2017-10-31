@@ -1,0 +1,10 @@
+.navbar {
+    display: flex;
+    height: 60px;
+    background: orange;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
