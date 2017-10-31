@@ -10,7 +10,7 @@ export default class Navbar extends Component {
                 <div className="navbar">
 
                     <HamburgerMenu />
-                    <p>3rd Opinion Media</p>
+                    <a href='/'><p>3rd Opinion Media</p></a>
                     <p>Welcome!</p>
 
                 </div>

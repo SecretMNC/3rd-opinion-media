@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
 import './Lists.css';
-import { HashRouter, Route } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
+
+export default class TVshows extends Component {
+    render() {
+        return (
+            <div>
+                <Navbar />
+                <p>TV Show List</p>
+            </div>
+        )
+    }
+};

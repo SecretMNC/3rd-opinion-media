@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import '../Navbar/Navbar.css';
+import { Link } from 'react-router-dom';
 
 export default class HamburgerMenu extends Component {
     state = {
@@ -47,11 +48,11 @@ export default class HamburgerMenu extends Component {
           value={this.state.valueSingle}
           
         >
-          <MenuItem value="1" primaryText="Movies" />
-          <MenuItem value="2" primaryText="T.V. Shows" />
-          <MenuItem value="3" primaryText="Anime" />
-          <MenuItem value="4" primaryText="Video Games" />
-          <MenuItem value="5" primaryText="Reviewer Biographies" />
+          <Link to='/Movies' className='links'><MenuItem value="1" primaryText="Movies" /></Link>
+          <Link to='/TVshows' className='links'><MenuItem value="2" primaryText="T.V. Shows" /> </Link>
+          <Link to='/Anime' className='links'><MenuItem value="3" primaryText="Anime" /></Link>
+          <Link to='/VideoGames' className='links'><MenuItem value="4" primaryText="Video Games" /></Link>
+          <Link to='/Bios' className='links'><MenuItem value="5" primaryText="Reviewer Biographies" /></Link>
         </IconMenu>
         </div>
     );
