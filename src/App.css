@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -22,11 +23,41 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.home-buttons {
+  display: grid;
+  grid-template-columns: 60px auto 60px;
+  grid-template-rows: 30px 150px 150px 150px 150px 30px;
+  grid-row-gap: 25px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
 }
 
-.low-font {
-  font-family: "Roboto", sans-serif;
+.item {
+  grid-column: 2/3;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  text-decoration: underline solid black;
+  text-underline-position: under;
+  padding: 5px;
+}
+
+.item1 {
+  grid-row: 2/3;
+  align-self: start;
+  
+}
+
+.item2 {
+  grid-row: 3/4;
+}
+
+.item3 {
+  grid-row: 4/5;
+}
+
+.item4 {
+  grid-row: 5/6;
 }
