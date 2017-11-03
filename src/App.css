@@ -39,6 +39,7 @@
   font-family: "Roboto", sans-serif;
 }
 
+
 .item {
   grid-column: 2/3;
   height: 100%;
@@ -47,11 +48,18 @@
   text-decoration: underline solid black;
   text-underline-position: under;
   padding: 5px;
+  background-image: ;
 }
 
 .item1 {
   grid-row: 2/3;
   align-self: start;
+  
+}
+
+.image1 {
+  height: 100px;
+  width: auto;
 }
 
 .item2 {

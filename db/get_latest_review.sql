@@ -1,3 +1,5 @@
-SELECT title, user_id, poster_id
+SELECT movie_reviews.title, movie_reviews.user_id, cover_art.url, users.full_name
 FROM movie_reviews
-ORDER BY posted DESC LIMIT 1;
+INNER JOIN cover_art ON movie_reviews.art_id = cover_art.id
+INNER JOIN users ON movie_reviews.user_id = users.id
+ORDER BY post_date DESC LIMIT 1;
