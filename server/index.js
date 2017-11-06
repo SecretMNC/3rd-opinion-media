@@ -28,7 +28,7 @@ app.get('/api/info/:retrieve', (req, res) => {
     db.get_image([req.params.retrieve]).then(image => { 
         
         if (image[0]) {
-            console.log('here')
+            // console.log('here')
             res.status(200).send(image)
         } else {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.KEY}&query=${req.params.retrieve}`)

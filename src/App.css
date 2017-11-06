@@ -25,7 +25,11 @@
 
 .all {
   height: 100vh;
-  background: linear-gradient(to bottom right, #FC1501 ,#1D7CF2)
+  background: linear-gradient(to bottom right, #ee0000 ,#333) no-repeat;
+  background-image: url('http://cdn-04.independent.ie/incoming/article34393174.ece/51ed6/AUTOCROP/h342/cinema-projector.jpg');
+  background-attachment: fixed;
+  background-position: left;
+  background-size: 100%;
 }
 
 .home-buttons {
@@ -46,24 +50,29 @@
   width: 100%;
   border: 1px solid black;
   text-decoration: underline solid black;
+  text-shadow: 1px 1px black;
   text-underline-position: under;
+  color: white;
   padding: 5px;
-  background-image: ;
 }
 
 .item1 {
   grid-row: 2/3;
   align-self: start;
-  
+  background-image: url('https://c1.staticflickr.com/5/4022/4340029979_c12df3c8d1_b.jpg');
+  background-size: 100%;
 }
 
 .image1 {
   height: 100px;
   width: auto;
+  background-origin: content-box;
 }
 
 .item2 {
   grid-row: 3/4;
+  background-image: url('http://www.publicdomainpictures.net/pictures/80000/velka/scratched-film-strip-background.jpg');
+  background-size: 100%;
 }
 
 .item3 {
