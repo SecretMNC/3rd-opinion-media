@@ -1,0 +1,109 @@
+.all {
+    height: 100%;
+    background:
+    linear-gradient(to bottom right,
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url('http://cdn-04.independent.ie/incoming/article34393174.ece/51ed6/AUTOCROP/h342/cinema-projector.jpg');
+    background-attachment: fixed;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @media (min-width:600px) {
+    .all{
+      height: 100vh;
+    }
+  }
+  
+  .home-buttons {
+    display: grid;
+    grid-template-columns: 35px 220px 35px;
+    grid-template-rows: 30px 150px 150px 150px 150px 30px;
+    grid-row-gap: 25px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  
+  .item {
+    grid-column: 2/3;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    text-shadow: 1px 1px 8px black;
+    color: white;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+  
+  
+  .item1 {
+    grid-row: 2/3;
+    align-self: start;
+    background-image: url('https://c1.staticflickr.com/5/4022/4340029979_c12df3c8d1_b.jpg');
+    background-size: cover;
+  }
+  
+  .content1 {
+    grid-column: 1/2;
+    grid-row: 1/5;
+    padding-bottom: 20px;
+    padding-right: 15px;
+    font-family: 'Rozha One', serif;
+    font-size: 16px;
+    text-shadow: 2px -1px 8px black;
+  }
+  
+  .image1 {
+    height: auto;
+    width: 100px;
+    grid-column: 2/3;
+    grid-row: 1/5;
+  }
+  
+  .item2 {
+    grid-row: 3/4;
+    background-image: url('http://www.publicdomainpictures.net/pictures/80000/velka/scratched-film-strip-background.jpg');
+    background-size: cover;
+  }
+
+  .content2 {
+    grid-column: 2/3;
+    grid-row: 1/5;
+    padding-bottom: 20px;
+    padding-right: 15px;
+    font-family: 'Rozha One', serif;
+    font-size: 18px;
+    text-shadow: 2px -1px 8px black;
+  }
+  
+  .item3 {
+    grid-row: 4/5;
+    background: linear-gradient(to right, rgba(0, 0, 0, .45), rgba(255, 255, 255, 0));
+  }
+  
+  .item4 {
+    grid-row: 5/6;
+    background:
+    linear-gradient(to bottom right,
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url('http://cdn-04.independent.ie/incoming/article34393174.ece/51ed6/AUTOCROP/h342/cinema-projector.jpg');
+    background-size: cover;
+  }
+  
+  .filmReel {
+    grid-column: 1/2;
+    grid-row: 6/7;
+    justify-self: start;
+    height: 30px;
+    width: 30px;
+  }

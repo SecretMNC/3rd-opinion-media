@@ -46,6 +46,12 @@ app.get('/api/info/:search', (req, res) => {
         })
 })
 
+app.get('/api/users/', (req, res) => {
+    const db = app.get('db')
+    db.get_reviewers().then(response => {
+        res.status(200).send(response)
+    })
+})
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
