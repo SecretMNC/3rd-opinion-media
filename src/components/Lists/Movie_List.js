@@ -25,12 +25,13 @@ export default class Movies extends Component {
 
     render() {
         var movie = this.state.list_of_movies.map((item, index)=> {
+            var date = `${item.post_date}`.substring(0,10)
             return (
-                <div>
+                <div key={index}>
                   <h1> {item.movie_title} </h1>
                   <h1> {item.title} </h1>
                   <h2> {item.sample_text} </h2>
-                  <h2> {item.post_date} </h2>
+                  <h2> {date} </h2>
                   <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} />
                 </div>
             )
