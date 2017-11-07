@@ -5,7 +5,7 @@
       rgba(0, 0, 0, 1),
       rgba(255, 255, 255, 0.4)
     ),
-    url('http://cdn-04.independent.ie/incoming/article34393174.ece/51ed6/AUTOCROP/h342/cinema-projector.jpg');
+    url('../../assets/cinema-projector.jpg');
     background-attachment: fixed;
     background-position: left;
     background-repeat: no-repeat;
@@ -92,7 +92,7 @@
       rgba(0, 0, 0, 1),
       rgba(255, 255, 255, 0.4)
     ),
-    url('http://cdn-04.independent.ie/incoming/article34393174.ece/51ed6/AUTOCROP/h342/cinema-projector.jpg');
+    url('../../assets/cinema-projector.jpg');
     background-size: cover;
   }
   

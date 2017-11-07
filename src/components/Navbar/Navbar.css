@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     height: 60px;
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(to right, #FF8600, gold); 
     align-items: center;
     justify-content: space-between;
@@ -23,7 +23,7 @@ a, .links {
 
 @media (min-width:700px) {
     .navbar {
-      height: 90px;
+      height: 70px;
       font-size: 40px;
     }
 }

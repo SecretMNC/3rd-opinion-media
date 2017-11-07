@@ -67,5 +67,5 @@ app.get('/api/bios/', (req, res) => {
     })
 })
 
-const PORT = process.env.PORT;
+const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
