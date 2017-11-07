@@ -15,7 +15,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 //endpoints
 //diplaying latest review
-app.get('/api/reviews/movies/', (req, res) => {
+app.get('/api/reviews/movies/latest', (req, res) => {
     const db = app.get('db')
     db.get_latest_review().then(response => {
         res.status(200).send(response)
@@ -47,6 +47,20 @@ app.get('/api/info/:search', (req, res) => {
 })
 
 app.get('/api/users/', (req, res) => {
+    const db = app.get('db')
+    db.get_reviewers().then(response => {
+        res.status(200).send(response)
+    })
+})
+
+app.get('/api/reviews/movies/', (req, res) => {
+    const db = app.get('db')
+    db.get_movie_reviews().then(response => {
+        res.status(200).send(response)
+    })
+})
+
+app.get('/api/bios/', (req, res) => {
     const db = app.get('db')
     db.get_reviewers().then(response => {
         res.status(200).send(response)

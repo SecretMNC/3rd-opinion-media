@@ -12,11 +12,7 @@
     background-size: cover;
   }
 
-  @media (min-width:600px) {
-    .all{
-      height: 100vh;
-    }
-  }
+  
   
   .home-buttons {
     display: grid;
@@ -106,4 +102,29 @@
     justify-self: start;
     height: 30px;
     width: 30px;
+  }
+
+  @media (min-width:700px) {
+    .all{
+      height: 100%;
+    }
+
+    .home-buttons {
+      grid-template-columns: 35px 400px 35px;
+      grid-template-rows: 30px 300px 300px 300px 300px 30px;
+    }
+
+    .image1 {
+      width: 174px;
+      margin: 10px;
+    }
+
+    .content1 {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+
+    .content2 {
+      font-size: 30px;
+    }
   }

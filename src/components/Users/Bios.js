@@ -2,13 +2,41 @@ import React, { Component } from 'react';
 import '../../Reset.css';
 import './Bios.css';
 import Navbar from '../Navbar/Navbar';
+import axios from 'axios';
 
 export default class Movies extends Component {
+
+constructor() {
+    super()
+    this.state = {
+        list_of_bios: ['']
+    }
+}
+
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/bios/').then(response => {
+            console.log(response)
+            this.setState({
+                list_of_bios: response.data
+            })
+        })
+    }
+
     render() {
+        var bios = this.state.list_of_bios.map((item, index)=> {
+            return (
+                <div>
+                  <h1> {item.full_name} </h1>
+                  <img src={`{item.portrait}`} alt={`${item.full_name}`} />
+                  <h2> {item.bio} </h2>
+                </div>
+            )
+        })
         return (
             <div>
                 <Navbar />
-                <section className='bio-container'>
+                {bios}
+                {/* <section className='bio-container'>
 
                     <h2 className='name name1'>Stephen Moore</h2>
                     <img src="" alt="Portrait" className='portrait portrait1'></img>
@@ -30,7 +58,7 @@ export default class Movies extends Component {
 
 </p>
 
-                </section>
+                </section> */}
             </div>
         )
     }

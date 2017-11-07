@@ -10,7 +10,6 @@ import reel from '../../assets/movieicon.png';
 
 class Home extends Component {
 
-
   constructor() {
     super()
 
@@ -19,13 +18,13 @@ class Home extends Component {
       latest_movie_title: '',
       latest_title: '',
       latest_poster_url: '',
-      latest_reviewer: ['loading'],
+      latest_reviewer: [''],
       reviewers: []
     }
   }
 
   componentDidMount() { //Latest Review box
-    axios.get(`http://localhost:8080/api/reviews/movies/`).then(response => {
+    axios.get(`http://localhost:8080/api/reviews/movies/latest/`).then(response => {
       // console.log(response)
       this.setState({
         latest_movie_title: response.data[0].movie_title,
@@ -44,7 +43,7 @@ class Home extends Component {
 
     axios.get('/api/users').then(response => {
       this.setState({
-        
+
       })
     })
 
@@ -66,11 +65,17 @@ class Home extends Component {
             <img src={`http://image.tmdb.org/t/p/w300${this.state.latest_poster_url}`} alt={`${this.state.latestInput}`} className='image1' /></Link>
 
           <Link to='/' className='item item2'>
-            <p className='content2'>Classic Review</p></Link>
+            <p className='content2'>Classic Review</p>
+          </Link>
 
           <Link to='/bios' className='item item3'>
-            <p>Meet the Reviewers</p></Link>
-          <Link to='/Movies' className='item item4'><p>Browse</p></Link>
+            <p className='content1'>Meet the Reviewers</p>
+          </Link>
+
+          <Link to='/Movies' className='item item4'>
+            <p className='content2'>Browse</p>
+          </Link>
+
           <img src={reel} alt='login' className="filmReel" />
         </div>
       </div>

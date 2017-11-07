@@ -3,8 +3,8 @@ import './App.css';
 import Home from './components/Home/Home';
 import Movies from './components/Lists/Movie_List';
 import TVshows from './components/Lists/TVshows_List';
-import Anime from './components/Lists/Anime_List';
-import VideoGames from './components/Lists/VideoGame_List';
+import Anime from './components/Lists/Anime/Anime_List';
+import VideoGames from './components/Lists/VideoGames/VideoGame_List';
 import Bios from './components/Users/Bios';
 import { BrowserRouter, Route } from 'react-router-dom';
 

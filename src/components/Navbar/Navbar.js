@@ -11,7 +11,7 @@ export default class Navbar extends Component {
 
                     <HamburgerMenu />
                     <a href='/'><p>3rd Opinion Media</p></a>
-                    <p>Welcome!</p>
+                    <p className='welcome'>Welcome!</p>
 
                 </div>
                 </MuiThemeProvider>
