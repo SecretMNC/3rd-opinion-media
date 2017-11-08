@@ -24,20 +24,21 @@ export default class Movies extends Component {
     }
 
     render() {
-        var movie = this.state.list_of_movies.map((item, index)=> {
-            var date = `${item.post_date}`.substring(0,10)
+        var movie = this.state.list_of_movies.map((item, index) => {
+            var date = `${item.post_date}`.substring(0, 10)
             return (
-                <div key={index}>
-                  <h1> {item.movie_title} </h1>
-                  <h1> {item.title} </h1>
-                  <h2> {item.sample_text} </h2>
-                  <h2> {date} </h2>
-                  <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} />
-                </div>
+                    <div key={index} className='list-container'>
+                        <h1><a href='/'> {item.movie_title} </a> </h1>
+                        <h2><a href='/'> {item.title} </a></h2>
+                        <h3><a href='/'> {item.sample_text} </a></h3>
+                        <h4><a href='/'> {date} </a></h4>
+                        <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} className='poster' />
+                    </div>
+
             )
         })
         return (
-            <div>
+            <div className ='master'>
                 <Navbar />
                 {movie}
             </div>

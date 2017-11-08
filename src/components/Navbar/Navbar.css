@@ -13,7 +13,6 @@
 
 .welcome {
     margin-right: 20px;
-
 }
 
 a, .links {
@@ -24,6 +23,7 @@ a, .links {
 @media (min-width:700px) {
     .navbar {
       height: 70px;
-      font-size: 40px;
+      font-weight: 700;
+      font-size: 20px
     }
 }

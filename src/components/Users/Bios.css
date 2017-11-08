@@ -38,69 +38,18 @@ h1, h2, p {
     text-align: center;
 }
 
-/* Stephen Moore repeat(5 50px 150px auto) */
-/* .name0 {
-    grid-row: 2/3;
+@media(min-width:600px) {
+    .bio-container {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+
+    .portrait {
+        width: 300px;
+        height: 300px;
+    }
+
+    .name, .bio {
+        font-size: 25px;
+    }
 }
-
-.portrait0 {
-    grid-row: 3/4;
-}
-
-.bio0 {
-    grid-row: 4/5;
-} */
-
-/* Robby Moore */
-/* .name1 {
-    grid-row: 5/6;
-}
-
-.portrait1 {
-    grid-row: 6/7;
-}
-
-.bio1 {
-    grid-row: 7/8;
-} */
-
-/*Kyle Zollinger*/
-/* .name2 {
-    grid-row: 8/9;
-}
-
-.portrait2 {
-    grid-row: 9/10;
-    border: none;
-}
-
-.bio2 {
-    grid-row: 10/11;
-} */
-
-/*Kevin Pett*/
-/* .name3 {
-    grid-row: 11/12;
-}
-
-.portrait3 {
-    grid-row: 12/13;
-}
-
-.bio3 {
-    grid-row: 13/14;
-} */
-
-/*Emily Moore*/
-/* .name4 {
-    grid-row: 14/15;
-}
-
-.portrait4 {
-    grid-row: 15/16;
-}
-
-.bio4 {
-    grid-row: 16/17;
-    margin-bottom: 30px;
-} */

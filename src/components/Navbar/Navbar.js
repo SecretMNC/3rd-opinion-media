@@ -10,11 +10,11 @@ export default class Navbar extends Component {
                 <div className="navbar">
 
                     <HamburgerMenu />
-                    <a href='/'><p>3rd Opinion Media</p></a>
+                    <a href='/' className='title'><p>3rd Opinion Media</p></a>
                     <p className='welcome'>Welcome!</p>
 
                 </div>
-                </MuiThemeProvider>
-                    )
+            </MuiThemeProvider>
+        )
     }
 }
