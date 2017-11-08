@@ -7,9 +7,9 @@
     ),
     url('../../assets/cinema-projector.jpg');
     background-attachment: fixed;
-    background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
+    position: static;
   }
 
   
@@ -53,7 +53,7 @@
     padding-bottom: 20px;
     padding-right: 15px;
     font-family: 'Rozha One', serif;
-    font-size: 16px;
+    font-size: 15px;
     text-shadow: 2px -1px 8px black;
   }
   

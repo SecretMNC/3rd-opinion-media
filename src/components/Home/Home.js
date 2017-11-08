@@ -41,11 +41,11 @@ class Home extends Component {
       })
     })
 
-    axios.get('/api/users').then(response => {
-      this.setState({
+  //   axios.get('/api/users').then(response => {
+  //     this.setState({
 
-      })
-    })
+  //     })
+  //   })
 
   };
 

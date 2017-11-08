@@ -1,5 +1,5 @@
 .master {
-    background: linear-gradient(to bottom right, black, lightgrey);
+    background: linear-gradient(to bottom right, rgb(138, 0, 0), #000079);
 }
 
 .list-container {
@@ -12,6 +12,8 @@
     text-align: center;
     justify-items: center;
     margin: 20px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .poster {

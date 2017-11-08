@@ -15,7 +15,7 @@ constructor() {
 
 componentDidMount() {
     axios.get('http://localhost:8080/api/bios/').then(response => {
-        console.log(response)
+        // console.log(response)
         this.setState({
             list_of_bios: response.data
         })

@@ -6,6 +6,7 @@ import TVshows from './components/Lists/TVshows_List';
 import Anime from './components/Lists/Anime/Anime_List';
 import VideoGames from './components/Lists/VideoGames/VideoGame_List';
 import Bios from './components/Users/Bios';
+import Review from './components/children/Review';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path='/Anime' component={Anime}/>
             <Route path='/VideoGames' component={VideoGames}/>
             <Route path='/Bios' component={Bios}/>
+            <Route path='/Review' component={Review}/>
           </div>
         </BrowserRouter>
       </div>
