@@ -36,7 +36,6 @@ export default class Movies extends Component {
                         <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} className='poster' />
                     </a>
                 </div>
-
             )
         })
         return (

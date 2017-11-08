@@ -14,7 +14,7 @@ class Home extends Component {
     super()
 
     this.state = {
-      latestInput: 'Blade Runner 2049',
+      latestInput: 'Latest Review',
       latest_movie_title: '',
       latest_title: '',
       latest_poster_url: '',
@@ -29,7 +29,8 @@ class Home extends Component {
       this.setState({
         latest_movie_title: response.data[0].movie_title,
         latest_title: response.data[0].title,
-        latest_reviewer: response.data[0].full_name
+        latest_reviewer: response.data[0].full_name,
+        latest_poster_url: response.data[0].url
       })
     })
 

@@ -11,17 +11,32 @@ export default class Review extends Component {
 
         this.state = {
             reviewName: 'American Made: Aggressively Average',
-            reviewer: 'Kyle Zollinger'
+            reviewer: 'Kyle Zollinger',
+            rating: '',
+            posterUrl: [],
+            date: '',
+            review: ''
         }
     }
 
     componentDidMount() {
         axios.get(`/api/reviews/${this.state.reviewName}`).then(response => {
-
+            console.log(response)
+            this.setState({
+                rating: response.data[0].rating,
+                date: response.data[0].post_date,
+                posterUrl: response.data[0].url,
+                reviewer: response.data[0].full_name,
+                review: response.data[0].review
+            })
         })
     }
 
     render() {
+        const parsedReview = this.state.review.split('\n').map((line, i) => {
+            return <p className='review' key={i}>{line}<br /></p>
+        })
+        var date = `${this.state.date}`.substring(0, 10)
         return (
             <div className='master'>
                 <Navbar />
@@ -29,7 +44,10 @@ export default class Review extends Component {
 
                     <h1 className='title'>{this.state.reviewName}</h1>
                     <h1 className='title'>{this.state.reviewer}</h1>
-                    <img src='' alt=''/>
+                    <h1 className='rating'>{this.state.rating}/10 </h1>
+                    <img src={`http://image.tmdb.org/t/p/w300${this.state.posterUrl}`}alt='' className='poster'/>
+                    <h1 className='title'>{date}</h1>
+                    {parsedReview}
 
                 </div>
             </div>

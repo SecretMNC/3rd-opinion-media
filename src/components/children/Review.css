@@ -2,7 +2,11 @@
     background: #303030;
     color: white;
     text-shadow: 1px 1px 5px black;
-    height: 100vh;
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: static;
 }
 
 .review-container {
@@ -12,9 +16,30 @@
     align-content: center;
     justify-content: center;
     text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .title {
     grid-column: 2/3;
     align-items: center;
+}
+
+.rating {
+    grid-column: 2/3;
+    font-size: 40px;
+    font-family: 'Rozha One', Serif;
+}
+
+.poster {
+    grid-column: 2/3;
+    align-self: center;
+    justify-self: center;
+    padding: 15px;
+}
+
+.review {
+    grid-column: 2/3;
+    align-self: center;
+    text-align: left;
 }
