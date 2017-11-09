@@ -43,7 +43,7 @@
   .item1 {
     grid-row: 2/3;
     align-self: start;
-    background-image: url('https://c1.staticflickr.com/5/4022/4340029979_c12df3c8d1_b.jpg');
+    background-image: url('../../assets/Blurred-Background.jpg');
     background-size: cover;
   }
   
@@ -66,7 +66,7 @@
   
   .item2 {
     grid-row: 3/4;
-    background-image: url('http://www.publicdomainpictures.net/pictures/80000/velka/scratched-film-strip-background.jpg');
+    background-image: url('../../assets/film-background.jpg');
     background-size: cover;
   }
 

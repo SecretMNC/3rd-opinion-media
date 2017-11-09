@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Lists.css';
 import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
-// import Moviecards from './moviecards';
+import { Link } from 'react-router-dom';
+
 
 export default class Movies extends Component {
 
@@ -28,13 +29,13 @@ export default class Movies extends Component {
             var date = `${item.post_date}`.substring(0, 10)
             return (
                 <div key={index} className='list-container'>
-                    <a href='/'>
+                    <Link to='/review/'>
                         <h1> {item.movie_title}  </h1>
                         <h2> {item.title} </h2>
                         <h3> {item.sample_text} </h3>
                         <h4> {date} </h4>
                         <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} className='poster' />
-                    </a>
+                    </Link>
                 </div>
             )
         })
