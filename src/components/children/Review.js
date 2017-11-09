@@ -11,7 +11,7 @@ export default class Review extends Component {
 
         this.state = {
             reviewName: this.props.match.params.article,
-            reviewer: 'Kyle Zollinger',
+            reviewer: '',
             rating: '',
             posterUrl: [],
             date: '',
@@ -20,8 +20,8 @@ export default class Review extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/reviews/${this.state.reviewName}`).then(response => {
-            console.log(response)
+        console.log(this.state)
+        axios.get(`/api/reviews/${this.state.reviewName}/`).then(response => {
             this.setState({
                 rating: response.data[0].rating,
                 date: response.data[0].post_date,
@@ -33,7 +33,7 @@ export default class Review extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.article)
+        console.log(this.props.match.params.article) 
         const parsedReview = this.state.review.split('\n').map((line, i) => {
             return <p className='review' key={i}>{line}<br /></p>
         })

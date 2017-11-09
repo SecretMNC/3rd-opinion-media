@@ -28,6 +28,7 @@
 .rating {
     grid-column: 2/3;
     font-size: 40px;
+    color: gold;
     font-family: 'Rozha One', Serif;
 }
 

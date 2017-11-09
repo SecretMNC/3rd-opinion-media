@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Navbar.css'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import HamburgerMenu from '../material-ui/HamburgerMenu';
+import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
     render() {
@@ -10,7 +11,7 @@ export default class Navbar extends Component {
                 <div className="navbar">
 
                     <HamburgerMenu />
-                    <a href='/' className='title'><p>3rd Opinion Media</p></a>
+                    <Link to='/' className='title'><p>3rd Opinion Media</p></Link>
                     <p className='welcome'>Welcome!</p>
 
                 </div>

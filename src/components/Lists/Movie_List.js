@@ -11,26 +11,26 @@ export default class Movies extends Component {
         super()
 
         this.state = {
-            list_of_movies: ['loading...']
+            list: ['loading...']
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/reviews/movies/').then(response => {
+        axios.get('/api/reviews/movies/').then(response => {
             console.log(response)
             this.setState({
-                list_of_movies: response.data
+                list: response.data
             })
         })
     }
 
     render() {
-        var movie = this.state.list_of_movies.map((item, index) => {
+        var movie = this.state.list.map((item, index) => {
             var date = `${item.post_date}`.substring(0, 10)
             return (
                 <div key={index} className='list-container'>
                     <Link to={`/review/${item.title}`}>
-                        <h1> {item.movie_title}  </h1>
+                        <h1> {item.movie_title} </h1>
                         <h2> {item.title} </h2>
                         <h3> {item.sample_text} </h3>
                         <h4> {date} </h4>

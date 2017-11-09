@@ -24,7 +24,7 @@ class Home extends Component {
   }
 
   componentDidMount() { //Latest Review box
-    axios.get(`http://localhost:8080/api/reviews/movies/latest/`).then(response => {
+    axios.get(`/api/reviews/movies/latest/`).then(response => {
       // console.log(response)
       this.setState({
         latest_movie_title: response.data[0].movie_title,

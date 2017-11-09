@@ -62,9 +62,9 @@ app.get('/api/reviews/movies/', (req, res) => {
     })
 });
 
-app.get('/api/reviews/:review', (req, res) => {
+app.get('/api/reviews/:review/', (req, res) => {
     const db = app.get('db')
-    db.get_review([req.params.review]).then(response => {
+    db.get_movie_review([req.params.review]).then(response => {
         res.status(200).send(response)
     })
 });

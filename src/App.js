@@ -21,7 +21,7 @@ class App extends Component {
             <Route path='/Anime' component={Anime}/>
             <Route path='/VideoGames' component={VideoGames}/>
             <Route path='/Bios' component={Bios}/>
-            <Route path='/Review/:article' component={Review}/>
+            <Route path='/Review/:article/' component={Review}/>
           </div>
         </BrowserRouter>
       </div>
