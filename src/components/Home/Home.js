@@ -35,12 +35,7 @@ class Home extends Component {
     })
 
     //getting poster image
-    axios.get(`http://localhost:8080/api/info/${this.state.latestInput}`).then(response => {
-      // console.log(response)
-      this.setState({
-        latest_poster_url: this.state.latest_poster_url + [response.data[0].url]
-      })
-    })
+   
 
   //   axios.get('/api/users').then(response => {
   //     this.setState({
