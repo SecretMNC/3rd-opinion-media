@@ -29,7 +29,7 @@ export default class Movies extends Component {
             var date = `${item.post_date}`.substring(0, 10)
             return (
                 <div key={index} className='list-container'>
-                    <Link to='/review/'>
+                    <Link to={`/review/${item.title}`}>
                         <h1> {item.movie_title}  </h1>
                         <h2> {item.title} </h2>
                         <h3> {item.sample_text} </h3>

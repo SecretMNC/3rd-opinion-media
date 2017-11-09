@@ -6,11 +6,11 @@ import Navbar from '../Navbar/Navbar';
 
 export default class Review extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            reviewName: 'American Made: Aggressively Average',
+            reviewName: this.props.match.params.article,
             reviewer: 'Kyle Zollinger',
             rating: '',
             posterUrl: [],
@@ -33,6 +33,7 @@ export default class Review extends Component {
     }
 
     render() {
+        console.log(this.props.match.params.article)
         const parsedReview = this.state.review.split('\n').map((line, i) => {
             return <p className='review' key={i}>{line}<br /></p>
         })
