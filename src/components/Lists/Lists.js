@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-export default class Movies extends Component {
+export default class Lists extends Component {
 
     constructor() {
         super()
@@ -17,7 +17,7 @@ export default class Movies extends Component {
 
     componentDidMount() {
         axios.get('/api/reviews/movies/').then(response => {
-            console.log(response)
+            // console.log(response)
             this.setState({
                 list: response.data
             })
@@ -26,10 +26,10 @@ export default class Movies extends Component {
 
     render() {
         var movie = this.state.list.map((item, index) => {
-            var date = `${item.post_date}`.substring(0, 10)
+            var date = `${item.post_date}`.substring(0, 10);
             return (
                 <div key={index} className='list-container'>
-                    <Link to={`/review/${item.title}`}>
+                    <Link to={`/movies/${item.title}`}>
                         <h1> {item.movie_title} </h1>
                         <h2> {item.title} </h2>
                         <h3> {item.sample_text} </h3>

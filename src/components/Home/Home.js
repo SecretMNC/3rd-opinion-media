@@ -68,7 +68,7 @@ class Home extends Component {
             <p className='content1'>Meet the Reviewers</p>
           </Link>
 
-          <Link to='/Movies' className='item item4'>
+          <Link to='/Lists' className='item item4'>
             <p className='content2'>Browse</p>
           </Link>
 

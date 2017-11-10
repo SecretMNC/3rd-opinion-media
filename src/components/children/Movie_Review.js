@@ -4,7 +4,7 @@ import '../../App.css';
 import './Review.css';
 import Navbar from '../Navbar/Navbar';
 
-export default class Review extends Component {
+export default class Movie_Review extends Component {
 
     constructor(props) {
         super(props)
@@ -21,7 +21,7 @@ export default class Review extends Component {
 
     componentDidMount() {
         console.log(this.state)
-        axios.get(`/api/reviews/${this.state.reviewName}/`).then(response => {
+        axios.get(`/api/movies/${this.state.reviewName}/`).then(response => {
             this.setState({
                 rating: response.data[0].rating,
                 date: response.data[0].post_date,
