@@ -48,10 +48,10 @@ export default class HamburgerMenu extends Component {
           value={this.state.valueSingle}
           
         >
-          <Link to='/Lists' className='links'><MenuItem value="1" primaryText="Movies" /></Link>
-          <Link to='/TVshows' className='links'><MenuItem value="2" primaryText="T.V. Shows" /> </Link>
-          <Link to='/Anime' className='links'><MenuItem value="3" primaryText="Anime" /></Link>
-          <Link to='/VideoGames' className='links'><MenuItem value="4" primaryText="Video Games" /></Link>
+          <Link to='/list/movies' className='links'><MenuItem value="1" primaryText="Movies" /></Link>
+          <Link to='/list/TVshows' className='links'><MenuItem value="2" primaryText="T.V. Shows" /> </Link>
+          <Link to='/list/anime' className='links'><MenuItem value="3" primaryText="Anime" /></Link>
+          <Link to='/list/videogames' className='links'><MenuItem value="4" primaryText="Video Games" /></Link>
           <Link to='/Bios' className='links'><MenuItem value="5" primaryText="Reviewer Biographies" /></Link>
         </IconMenu>
         </div>

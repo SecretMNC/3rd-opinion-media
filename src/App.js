@@ -17,10 +17,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path='/' component={Home}/>
-            <Route path='/Lists' component={Lists}/>
-            <Route path='/TVshows' component={TVshows}/>
-            <Route path='/Anime' component={Anime}/>
-            <Route path='/VideoGames' component={VideoGames}/>
+            <Route path='/list/:media' component={Lists}/>
+            {/* <Route path='/list2/:media' component={Lists}/>
+            <Route path='/list3/:media' component={Lists}/>
+            <Route path='/list4/:media' component={Lists}/> */}
             <Route path='/Bios' component={Bios}/>
             <Route path='/Movies/:article/' component={Movie_Review}/>
             <Route path='/input' component={Input}/>

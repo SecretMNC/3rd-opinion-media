@@ -19,7 +19,7 @@ export default class Movie_Review extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         console.log(this.state)
         axios.get(`/api/movies/${this.state.reviewName}/`).then(response => {
             this.setState({
@@ -33,7 +33,6 @@ export default class Movie_Review extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.article) 
         const parsedReview = this.state.review.split('\n').map((line, i) => {
             return <p className='review' key={i}>{line}<br /></p>
         })

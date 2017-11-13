@@ -48,6 +48,7 @@ app.get('/api/info/:search', (req, res) => {
         })
 });
 
+//Supplies biographies for each reviewer in bios.js component
 app.get('/api/users/', (req, res) => {
     const db = app.get('db')
     db.get_reviewers().then(response => {
@@ -55,15 +56,32 @@ app.get('/api/users/', (req, res) => {
     })
 });
 
-app.get('/api/reviews/movies/', (req, res) => {
+//Gives the Lists.js component a different list based on the clicked link
+app.get('/api/reviews/:media/', (req, res) => {
     const db = app.get('db')
-    db.get_movie_reviews().then(response => {
+    
+    if (req.params.media === 'movies') {
+        db.get_movie_reviews().then(response => {
+            res.status(200).send(response)
+        });
+    } else if (req.params.media === 'TVshows') {
+        db.get_tvshow_reviews().then(response => {
+            res.status(200).send(response)
+        })
+    } else if (req.params.media === 'anime') {
+    db.get_anime_reviews().then(response => {
         res.status(200).send(response)
-    })
+        })
+    } else {
+        db.get_videogames_reviews().then(response => {
+            res.status(200).send(response)
+        })
+    }
 });
 
 app.get('/api/movies/:review/', (req, res) => {
     const db = app.get('db')
+
     db.get_movie_review([req.params.review]).then(response => {
         res.status(200).send(response)
     })
@@ -77,10 +95,15 @@ app.get('/api/bios/', (req, res) => {
 });
 
 app.post('/api/input/Movie', (req, res) => {
-    const db = app.post('db')
-    console.log(req)
+    const db = app.get('db')
+    
     db.post_movie_review([
-        
+        req.body.user,
+        req.body.title,
+        req.body.review,
+        req.body.sample,
+        req.body.name,
+        req.body.rating
     ]).then(response => {
         res.status(200).send(response)
     })
@@ -88,21 +111,42 @@ app.post('/api/input/Movie', (req, res) => {
 
 app.post('/api/input/TVshow', (req, res) => {
     const db = app.post('db')
-    db.post_tvshow_review().then(response => {
+    db.post_tvshow_review([
+        req.body.user,
+        req.body.title,
+        req.body.review,
+        req.body.sample,
+        req.body.name,
+        req.body.rating
+    ]).then(response => {
         res.status(200).send(response)
     })
 });
 
 app.post('/api/input/Anime', (req, res) => {
     const db = app.post('db')
-    db.post_anime_review().then(response => {
+    db.post_anime_review([
+        req.body.user,
+        req.body.title,
+        req.body.review,
+        req.body.sample,
+        req.body.name,
+        req.body.rating
+    ]).then(response => {
         res.status(200).send(response)
     })
 });
 
 app.post('/api/input/Videogame', (req, res) => {
     const db = app.post('db')
-    db.post_videogame_review().then(response => {
+    db.post_videogame_review([
+        req.body.user,
+        req.body.title,
+        req.body.review,
+        req.body.sample,
+        req.body.name,
+        req.body.rating
+    ]).then(response => {
         res.status(200).send(response)
     })
 });

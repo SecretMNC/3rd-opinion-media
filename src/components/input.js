@@ -56,17 +56,24 @@ export default class Input extends Component {
     };
 
     submit() {
+        // axios.get('/api/users').then(response => {
+        //     this.setState({
+
+        //     })
+        // })
+
         axios.post(`/api/input/${this.state.mediaType}`, {
             user: this.state.user,
             title: this.state.title,
             mediaType: this.state.mediaType,
             name: this.state.name,
             rating: this.state.rating,
-            review: this.state.review
+            review: this.state.review,
+            sample: this.state.review.substr(0, 150).concat('...')
         })
-        .then(response => {
-            alert(`You have successfully submitted your review, ${this.state.title}!`);
-        });
+            .then(response => {
+                alert(`You have successfully submitted your review, ${this.state.title}!`);
+            });
     };
 
 
@@ -82,13 +89,13 @@ export default class Input extends Component {
                         className='userBox'
                         defaultValue={this.state.user}
                         onChange={this.updateUser.bind(this)} />
-                        <ul className='idList'>ID guide:
+                    <ul className='idList'>ID guide:
                     <li>Stephen Moore = 1</li>
-                    <li>Kevin Pett = 2</li>
-                    <li>Robby Moore = 3</li>
-                    <li>Kyle Zollinger = 4</li>
-                    <li>Emily Moore = 5</li>
-                    <li>Tyrone Johnson = 7</li>
+                        <li>Kevin Pett = 2</li>
+                        <li>Robby Moore = 3</li>
+                        <li>Kyle Zollinger = 4</li>
+                        <li>Emily Moore = 5</li>
+                        <li>Tyrone Johnson = 7</li>
                     </ul>
                     <h2>Step 2: Title of your review </h2>
                     <input type='text'
@@ -125,9 +132,9 @@ export default class Input extends Component {
 
                     <button title='Submit'
                         className='submitButton'
-                        onClick={this.submit}>Submit</button>
+                        onClick={this.submit.bind(this)}>Submit</button>
 
-                    
+
 
                 </div>
 

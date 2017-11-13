@@ -7,16 +7,26 @@ import { Link } from 'react-router-dom';
 
 export default class Lists extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            list: ['loading...']
+            list: ['loading...'],
+            mediaType: this.props.match.params.media
         }
     }
 
     componentDidMount() {
-        axios.get('/api/reviews/movies/').then(response => {
+        axios.get(`/api/reviews/${this.state.mediaType}/`).then(response => {
+            // console.log(response)
+            this.setState({
+                list: response.data
+            })
+        })
+    }
+
+    componentWillReceiveProps(nextProps) { 
+        axios.get(`/api/reviews/${nextProps.match.params.media}/`).then(response => {
             // console.log(response)
             this.setState({
                 list: response.data
