@@ -1,0 +1,79 @@
+.inputs {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(to top, black, rgb(70, 70, 70))
+}
+
+h1 {
+    grid-column: 2/3;
+    justify-self: center;
+    margin: 15px;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+h2 {
+    grid-column: 2/3;
+    justify-self: center;
+    margin: 5px;
+}
+
+.userBox {
+    grid-column: 2/3;
+    width: 20px;
+    height: 15px;
+    margin: 15px;
+    justify-self: center;
+}
+
+.titleBox {
+    grid-column: 2/3;
+    width: 350px;
+    margin: 15px;
+    justify-self: center;
+}
+
+.mediaType {
+    grid-column: 2/3;
+    justify-self: center;
+    margin: 15px;
+}
+
+.nameBox {
+    grid-column: 2/3;
+    margin: 15px;
+    width: 350px;
+    justify-self: center;
+}
+
+.ratingBox {
+    grid-column: 2/3;
+    margin: 15px;
+    width: 20px;
+    justify-self: center;
+}
+
+.reviewBox {
+    grid-column: 2/3;
+    margin: 15px;
+    width: 700px;
+    height: 800px;
+    justify-self: center;
+}
+
+.submitButton {
+    grid-column: 2/3;
+    background: gold;
+    margin-bottom: 100px;
+    width: 60px;
+    justify-self: center;
+}
+
+.idList {
+    grid-column: 2/3;
+    justify-self: center;
+    margin-bottom: 15px;
+}

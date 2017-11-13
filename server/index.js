@@ -57,7 +57,7 @@ app.get('/api/users/', (req, res) => {
 
 app.get('/api/reviews/movies/', (req, res) => {
     const db = app.get('db')
-    db.get_movie_review().then(response => {
+    db.get_movie_reviews().then(response => {
         res.status(200).send(response)
     })
 });
@@ -76,10 +76,41 @@ app.get('/api/bios/', (req, res) => {
     })
 });
 
+app.post('/api/input/Movie', (req, res) => {
+    const db = app.post('db')
+    console.log(req)
+    db.post_movie_review([
+        
+    ]).then(response => {
+        res.status(200).send(response)
+    })
+});
+
+app.post('/api/input/TVshow', (req, res) => {
+    const db = app.post('db')
+    db.post_tvshow_review().then(response => {
+        res.status(200).send(response)
+    })
+});
+
+app.post('/api/input/Anime', (req, res) => {
+    const db = app.post('db')
+    db.post_anime_review().then(response => {
+        res.status(200).send(response)
+    })
+});
+
+app.post('/api/input/Videogame', (req, res) => {
+    const db = app.post('db')
+    db.post_videogame_review().then(response => {
+        res.status(200).send(response)
+    })
+});
+
 const path = require('path')
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+});
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));

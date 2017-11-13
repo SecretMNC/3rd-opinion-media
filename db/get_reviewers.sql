@@ -1,2 +1,3 @@
 SELECT *
-FROM users;
+FROM users
+where id != 6;

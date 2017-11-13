@@ -54,7 +54,7 @@ class Home extends Component {
 
           <Link to='/' className='item item1'>
             <div>
-              <p className='content1'>{this.state.latest_movie_title}</p>
+              <p className='content1'>Latest Review:</p>
               <p className='content1'>{this.state.latest_title}</p>
               <p className='content1'>{this.state.latest_reviewer}</p>
             </div>

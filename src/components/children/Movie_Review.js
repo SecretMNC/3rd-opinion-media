@@ -49,6 +49,8 @@ export default class Movie_Review extends Component {
                     <img src={`http://image.tmdb.org/t/p/w300${this.state.posterUrl}`}alt='' className='poster'/>
                     <h1 className='title'>{date}</h1>
                     {parsedReview}
+                    <h1 className='title'></h1>
+                    <h1 className='title'></h1>
 
                 </div>
             </div>
