@@ -56,11 +56,11 @@ export default class Input extends Component {
     };
 
     submit() {
-        // axios.get('/api/users').then(response => {
-        //     this.setState({
+        axios.get(`/api/info/${this.state.name}`).then(response => {
+                
 
-        //     })
-        // })
+            })
+        
 
         axios.post(`/api/input/${this.state.mediaType}`, {
             user: this.state.user,

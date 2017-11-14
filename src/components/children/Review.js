@@ -4,7 +4,7 @@ import '../../App.css';
 import './Review.css';
 import Navbar from '../Navbar/Navbar';
 
-export default class Movie_Review extends Component {
+export default class Review extends Component {
 
     constructor(props) {
         super(props)
@@ -19,9 +19,8 @@ export default class Movie_Review extends Component {
         }
     }
 
-    componentWillMount() {
-        console.log(this.state)
-        axios.get(`/api/movies/${this.state.reviewName}/`).then(response => {
+    componentDidMount() {
+        axios.get(`/api/getReview/${this.props.match.params.media}/${this.state.reviewName}/`).then(response => {
             this.setState({
                 rating: response.data[0].rating,
                 date: response.data[0].post_date,
@@ -36,6 +35,7 @@ export default class Movie_Review extends Component {
         const parsedReview = this.state.review.split('\n').map((line, i) => {
             return <p className='review' key={i}>{line}<br /></p>
         })
+       
         var date = `${this.state.date}`.substring(0, 10)
         return (
             <div className='master'>
@@ -45,11 +45,11 @@ export default class Movie_Review extends Component {
                     <h1 className='title'>{this.state.reviewName}</h1>
                     <h1 className='title'>{this.state.reviewer}</h1>
                     <h1 className='rating'>{this.state.rating}/10 </h1>
-                    <img src={`http://image.tmdb.org/t/p/w300${this.state.posterUrl}`}alt='' className='poster'/>
+                    <img src={this.state.posterUrl} alt='' className='poster'/>
                     <h1 className='title'>{date}</h1>
                     {parsedReview}
-                    <h1 className='title'></h1>
-                    <h1 className='title'></h1>
+                    <h1 className='title'> </h1>
+                    <h1 className='title'> </h1>
 
                 </div>
             </div>

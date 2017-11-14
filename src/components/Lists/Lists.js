@@ -34,17 +34,19 @@ export default class Lists extends Component {
         })
     }
 
+ 
+
     render() {
         var movie = this.state.list.map((item, index) => {
             var date = `${item.post_date}`.substring(0, 10);
             return (
                 <div key={index} className='list-container'>
-                    <Link to={`/movies/${item.title}`}>
-                        <h1> {item.movie_title} </h1>
+                    <Link to={`/review/${this.props.match.params.media}/${item.title}`} className='movieBox'>
+                        <h1> {item.media_title} </h1>
                         <h2> {item.title} </h2>
-                        <h3> {item.sample_text} </h3>
+                        <h3 className='sampleText'> {item.sample_text} </h3>
                         <h4> {date} </h4>
-                        <img src={`http://image.tmdb.org/t/p/w300${item.url}`} alt={`${item.movie_title}`} className='poster' />
+                        <img src={item.url} alt={`${item.movie_title}`} className='poster' />
                     </Link>
                 </div>
             )

@@ -1,4 +1,4 @@
-insert into videogame_reviews (user_id, title, post_date, review, sample_text, art_id, movie_title, rating)
+insert into videogame_reviews (user_id, title, post_date, review, sample_text, art_id, media_title, rating)
 values (
 $1,
 $2,

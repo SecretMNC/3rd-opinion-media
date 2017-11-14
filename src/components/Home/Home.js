@@ -25,6 +25,7 @@ class Home extends Component {
 
   componentDidMount() { //Latest Review box
     axios.get(`/api/reviews/movies/latest/`).then(response => {
+      // console.log(response.data[0].title)
       this.setState({
         latest_movie_title: response.data[0].movie_title,
         latest_title: response.data[0].title,
@@ -41,23 +42,23 @@ class Home extends Component {
         <Navbar />
         <div className="home-buttons">
 
-          <Link to={`/movies/${this.state.latest_title}`} className='item item1'>
+          <Link to={`/review/movies/${this.state.latest_title}`} className='item item1'>
             <div>
               <p className='content1'>Latest Review:</p>
               <p className='content1'>{this.state.latest_title}</p>
               <p className='content1'>{this.state.latest_reviewer}</p>
             </div>
-            <img src={`http://image.tmdb.org/t/p/w300${this.state.latest_poster_url}`} alt='Load failed: Refresh page' className='image1' /></Link>
+            <img src={this.state.latest_poster_url} alt='Movie Poster' className='image1' /></Link>
 
-          <Link to='/' className='item item2'>
-            <p className='content2'>Classic Review</p>
+          <Link to='/list/TVshows' className='item item2'>
+            <p className='content2'>TVShow Review</p>
           </Link>
 
           <Link to='/bios' className='item item3'>
             <p className='content1'>Meet the Reviewers</p>
           </Link>
 
-          <Link to='/Lists' className='item item4'>
+          <Link to='/list/movies' className='item item4'>
             <p className='content2'>Browse</p>
           </Link>
 

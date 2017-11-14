@@ -30,23 +30,28 @@ app.get('/api/info/:retrieve', (req, res) => {
     db.get_image([req.params.retrieve]).then(image => { 
         
         if (image[0]) {
-            // console.log('here')
+            
             res.status(200).send(image)
         } else {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.KEY}&query=${req.params.retrieve}`)
                 .then(response => {
-                    res.status(200).send(response)
+                    db.post_image([
+                        response.data.results[0].poster_path,
+                        response.data.results[0].title
+                    ]).then(response => {
+                        res.status(200).send(response)
+                    })
                 })
         }
     })
 });
 
-app.get('/api/info/:search', (req, res) => {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.KEY}&query=${req.params.search}`)
-        .then(response => {
-            res.status(200).send(response.data)
-        })
-});
+// app.get('/api/info/:search', (req, res) => {
+//     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.KEY}&query=${req.params.search}`)
+//         .then(response => {
+//             res.status(200).send(response.data)
+//         })
+// });
 
 //Supplies biographies for each reviewer in bios.js component
 app.get('/api/users/', (req, res) => {
@@ -79,13 +84,27 @@ app.get('/api/reviews/:media/', (req, res) => {
     }
 });
 
-app.get('/api/movies/:review/', (req, res) => {
+app.get('/api/getReview/:media/:review/', (req, res) => {
     const db = app.get('db')
-
-    db.get_movie_review([req.params.review]).then(response => {
+    if (req.params.media === 'movies') {
+        db.get_movie_review([req.params.review]).then(response => {
+            res.status(200).send(response)
+        });
+    } else if (req.params.media === 'TVshows') {
+        db.get_tvshow_review([req.params.review]).then(response => {
+            res.status(200).send(response)
+        })
+    } else if (req.params.media === 'anime') {
+    db.get_anime_review([req.params.review]).then(response => {
         res.status(200).send(response)
-    })
+        })
+    } else {
+        db.get_videogames_review([req.params.review]).then(response => {
+            res.status(200).send(response)
+        })
+    }
 });
+
 
 app.get('/api/bios/', (req, res) => {
     const db = app.get('db')
@@ -93,6 +112,13 @@ app.get('/api/bios/', (req, res) => {
         res.status(200).send(response)
     })
 });
+
+app.post('/api/postImage/', (req,res) => {
+    const db = app.get('db')
+    db.post_image().then(response => {
+        res.status(200).send(response)
+    })
+})
 
 app.post('/api/input/Movie', (req, res) => {
     const db = app.get('db')
@@ -110,7 +136,7 @@ app.post('/api/input/Movie', (req, res) => {
 });
 
 app.post('/api/input/TVshow', (req, res) => {
-    const db = app.post('db')
+    const db = app.get('db')
     db.post_tvshow_review([
         req.body.user,
         req.body.title,
@@ -124,7 +150,7 @@ app.post('/api/input/TVshow', (req, res) => {
 });
 
 app.post('/api/input/Anime', (req, res) => {
-    const db = app.post('db')
+    const db = app.get('db')
     db.post_anime_review([
         req.body.user,
         req.body.title,
@@ -138,7 +164,7 @@ app.post('/api/input/Anime', (req, res) => {
 });
 
 app.post('/api/input/Videogame', (req, res) => {
-    const db = app.post('db')
+    const db = app.get('db')
     db.post_videogame_review([
         req.body.user,
         req.body.title,
