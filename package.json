@@ -4,8 +4,10 @@
   "main": "./server/index.js",
   "private": true,
   "dependencies": {
+    "auth0-js": "^8.11.3",
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
@@ -14,6 +16,7 @@
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.0",
     "react": "^16.0.0",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",
     "session": "^0.1.0"

@@ -33,6 +33,13 @@ class Home extends Component {
         latest_poster_url: response.data[0].url
       })
     })
+
+      axios.get('http://localhost:8080/api/bios/').then(response => {
+        // console.log(response)
+        this.setState({
+          reviewers: response.data
+        })
+      })
   };
 
 
@@ -55,6 +62,7 @@ class Home extends Component {
           </Link>
 
           <Link to='/bios' className='item item3'>
+          
             <p className='content1'>Meet the Reviewers</p>
           </Link>
 

@@ -14,7 +14,7 @@ export default class Lists extends Component {
             list: ['loading...'],
             mediaType: this.props.match.params.media
         }
-    }
+    };
 
     componentDidMount() {
         axios.get(`/api/reviews/${this.state.mediaType}/`).then(response => {
@@ -23,7 +23,7 @@ export default class Lists extends Component {
                 list: response.data
             })
         })
-    }
+    };
 
     componentWillReceiveProps(nextProps) { 
         axios.get(`/api/reviews/${nextProps.match.params.media}/`).then(response => {
@@ -32,7 +32,7 @@ export default class Lists extends Component {
                 list: response.data
             })
         })
-    }
+    };
 
  
 

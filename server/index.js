@@ -3,11 +3,21 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
     , massive = require('massive')
-    , axios = require('axios');
+    , axios = require('axios')
+    , session = require('express-session')
+    , passport = require('passport')
+    , Auth0Strategy = require('passport-auth0')
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use( express.static( `${__dirname}/../build` ) );
 
@@ -15,7 +25,38 @@ massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db)
 });
 
+passport.use( new Auth0Strategy({
+    domain: process.env.AUTH_DOMAIN,
+    clientID: process.env.AUTH_CLIENTID,
+    clientSecret: process.env.AUTH_SECRET,
+    callbackURL: process.env.AUTH_CALLBACK
+}, function(accessToken, refreshToken, extraParams, profile, done){
+    return done(null, profile);
+}));
+passport.serializeUser( function(id, done){
+    done(null, id);
+});
+passport.deserializeUser( function(id, done) {
+    app.get('db').find_session_user([id]).then(user => {
+        done(null, user[0]);
+    })
+});
+
 //endpoints
+app.get('/auth', passport.authenticate('auth0'));
+app.get('/auth/callback', passport.authenticate('auth0', {
+    successRedirect: 'http://localhost:3000/login',
+    failureRedirect: '/auth'
+}));
+app.get('/auth/me', (req, res) => {
+    if (req.user) {
+        return res.status(200).send(req.user);
+    } else {
+        return res.status(401).send('Need to log in.')
+    }
+});
+
+
 //diplaying latest review
 app.get('/api/reviews/movies/latest', (req, res) => {
     const db = app.get('db')
@@ -54,7 +95,8 @@ app.get('/api/info/:retrieve', (req, res) => {
 // });
 
 //Supplies biographies for each reviewer in bios.js component
-app.get('/api/users/', (req, res) => {
+
+app.get('/api/bios/', (req, res) => {
     const db = app.get('db')
     db.get_reviewers().then(response => {
         res.status(200).send(response)
@@ -106,12 +148,6 @@ app.get('/api/getReview/:media/:review/', (req, res) => {
 });
 
 
-app.get('/api/bios/', (req, res) => {
-    const db = app.get('db')
-    db.get_reviewers().then(response => {
-        res.status(200).send(response)
-    })
-});
 
 app.post('/api/postImage/', (req,res) => {
     const db = app.get('db')
@@ -122,7 +158,6 @@ app.post('/api/postImage/', (req,res) => {
 
 app.post('/api/input/Movie', (req, res) => {
     const db = app.get('db')
-    
     db.post_movie_review([
         req.body.user,
         req.body.title,
