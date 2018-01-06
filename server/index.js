@@ -6,46 +6,68 @@ const express = require('express')
     , axios = require('axios')
     , session = require('express-session')
     , passport = require('passport')
-    , Auth0Strategy = require('passport-auth0')
+    , Auth0Strategy = require('passport-auth0');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use( express.static( `${__dirname}/../build` ) );
-
 massive(process.env.CONNECTION_STRING).then(db => {
-    app.set('db', db)
+    console.log('db is connected');
+    app.set('db', db);
 });
 
-passport.use( new Auth0Strategy({
+passport.use(new Auth0Strategy({
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENTID,
     clientSecret: process.env.AUTH_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
-}, function(accessToken, refreshToken, extraParams, profile, done){
-    return done(null, profile);
+}, function (accessToken, refreshToken, extraParams, profile, done) {
+    const db = app.get('db');
+    const userData = profile._json;
+    // console.log(profile._json);
+    db.find_user([userData.identities[0].user_id])
+        .then(user => {
+
+            if (user[0]) {
+                return done(null, profile);
+            } else {
+                db.create_user([
+                    userData.name,
+                    userData.picture,
+                    userData.email,
+                    userData.identities[0].user_id
+                ]).then(user => {
+                    return done(null, user[0].user_id);
+                }).catch(err => console.log('create', err))
+            }
+        }).catch(err => console.log('find', err));
 }));
-passport.serializeUser( function(id, done){
+
+passport.serializeUser(function (id, done) {
     done(null, id);
 });
-passport.deserializeUser( function(id, done) {
-    app.get('db').find_session_user([id]).then(user => {
-        done(null, user[0]);
-    })
+passport.deserializeUser(function (id, done) {
+    app.get('db').find_session_user([id])
+        .then(user => {
+            return done(null, user[0]);
+        })
 });
 
 //endpoints
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/login',
+    successRedirect: 'http://localhost:3000/input',
     failureRedirect: '/auth'
 }));
 app.get('/auth/me', (req, res) => {
@@ -54,6 +76,11 @@ app.get('/auth/me', (req, res) => {
     } else {
         return res.status(401).send('Need to log in.')
     }
+});
+
+app.get('/auth/logout', (req, res) => {
+    req.logout()
+    res.redirect(process.env.REACT_APP_LOGOUT)
 });
 
 
@@ -68,10 +95,10 @@ app.get('/api/reviews/movies/latest', (req, res) => {
 app.get('/api/info/:retrieve', (req, res) => {
     const db = app.get('db')
     // console.log(req.params.retrieve)
-    db.get_image([req.params.retrieve]).then(image => { 
-        
+    db.get_image([req.params.retrieve]).then(image => {
+
         if (image[0]) {
-            
+
             res.status(200).send(image)
         } else {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.KEY}&query=${req.params.retrieve}`)
@@ -106,7 +133,7 @@ app.get('/api/bios/', (req, res) => {
 //Gives the Lists.js component a different list based on the clicked link
 app.get('/api/reviews/:media/', (req, res) => {
     const db = app.get('db')
-    
+
     if (req.params.media === 'movies') {
         db.get_movie_reviews().then(response => {
             res.status(200).send(response)
@@ -116,8 +143,8 @@ app.get('/api/reviews/:media/', (req, res) => {
             res.status(200).send(response)
         })
     } else if (req.params.media === 'anime') {
-    db.get_anime_reviews().then(response => {
-        res.status(200).send(response)
+        db.get_anime_reviews().then(response => {
+            res.status(200).send(response)
         })
     } else {
         db.get_videogames_reviews().then(response => {
@@ -137,8 +164,8 @@ app.get('/api/getReview/:media/:review/', (req, res) => {
             res.status(200).send(response)
         })
     } else if (req.params.media === 'anime') {
-    db.get_anime_review([req.params.review]).then(response => {
-        res.status(200).send(response)
+        db.get_anime_review([req.params.review]).then(response => {
+            res.status(200).send(response)
         })
     } else {
         db.get_videogames_review([req.params.review]).then(response => {
@@ -149,7 +176,7 @@ app.get('/api/getReview/:media/:review/', (req, res) => {
 
 
 
-app.post('/api/postImage/', (req,res) => {
+app.post('/api/postImage/', (req, res) => {
     const db = app.get('db')
     db.post_image().then(response => {
         res.status(200).send(response)
@@ -213,8 +240,8 @@ app.post('/api/input/Videogame', (req, res) => {
 });
 
 const path = require('path')
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 const PORT = 8080;

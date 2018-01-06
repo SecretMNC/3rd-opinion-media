@@ -12,44 +12,91 @@
     position: static;
   }
 
-  
-  
   .home-buttons {
-    display: grid;
-    grid-template-columns: 35px 220px 35px;
-    grid-template-rows: 30px 150px 150px 150px 150px 30px;
-    grid-row-gap: 25px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: "Roboto", sans-serif;
+    margin-bottom: 20px;
   }
   
   
   .item {
-    grid-column: 2/3;
-    height: 100%;
-    width: 100%;
+    height: 220px;
+    width: 220px;
     border: 1px solid black;
     text-shadow: 1px 1px 8px black;
     color: white;
     padding: 5px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin-top: 25px;
+  
+  }
+
+  .filmReel {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    width: 25px;
+    height: 25px;
   }
   
   
   .item1 {
-    grid-row: 2/3;
-    align-self: start;
     background-image: url('../../assets/Blurred-Background.jpg');
+    display: flex;
+    width: 220px;
+  }
+  
+  .image1 {
+    height: 150px;
+    width: 50%;
+    float: right;
+  }
+  
+  .content1 {
+    width: 50%;
+    font-family: 'Rozha One', serif;
+    font-size: 20px;
+  }
+
+  .item > .content1 > p {
+    margin-bottom: 15px;
+    font-family: 'Rozha One', serif;
+    font-size: 20px;
+  }
+
+  .item2 {
+    background: linear-gradient(to bottom right, rgb(14, 14, 14), rgb(90, 90, 90));
+  }
+
+  .content2 > p {
+    font-family: 'Rozha One', serif;
+    font-size: 20px;
+  }
+
+  .content2 > section {
+      margin-top: 10px;
+  }
+
+  .content2 > section > img {
+    margin-left:10px;
+    margin-bottom:10px;
+}
+
+  .item3 {
+    background-image: url('../../assets/film-background.jpg');
+    object-fit: fill;
+    height: 220px;
+    width: 220px;
+  }
+  /* .item1 {
+    align-self: center;
     background-size: cover;
   }
   
   .content1 {
-    grid-column: 1/2;
-    grid-row: 1/5;
+
     padding-bottom: 20px;
     padding-right: 15px;
     font-family: 'Rozha One', serif;
@@ -57,22 +104,15 @@
     text-shadow: 2px -1px 8px black;
   }
   
-  .image1 {
-    height: auto;
-    width: 100px;
-    grid-column: 2/3;
-    grid-row: 1/5;
-  }
   
   .item2 {
-    grid-row: 3/4;
+  
     background-image: url('../../assets/film-background.jpg');
     background-size: cover;
   }
 
   .content2 {
-    grid-column: 2/3;
-    grid-row: 1/5;
+ 
     padding-bottom: 20px;
     padding-right: 15px;
     font-family: 'Rozha One', serif;
@@ -81,11 +121,11 @@
   }
   
   .item3 {
-    grid-row: 4/5;
-    background: linear-gradient(to right, rgba(0, 0, 0, .45), rgba(255, 255, 255, 0));
-  }
   
-  .item4 {
+    background: linear-gradient(to right, rgba(0, 0, 0, .45), rgba(255, 255, 255, 0));
+  } */
+  
+  /* .item4 {
     grid-row: 5/6;
     background:
     linear-gradient(to bottom right,
@@ -94,24 +134,23 @@
     ),
     url('../../assets/cinema-projector.jpg');
     background-size: cover;
-  }
+  } */
   
-  .filmReel {
-    grid-column: 1/2;
-    grid-row: 6/7;
-    justify-self: start;
-    height: 30px;
-    width: 30px;
-  }
+  /* .filmReel {
+    position: absolute;
+    bottom: -300px;
+    left: 100px;
+    height: 25px;
+    width: 25px;
+  } */
 
-  @media (min-width:700px) {
+  /* @media (min-width:700px) {
     .all{
       height: 100%;
     }
 
     .home-buttons {
-      grid-template-columns: 35px 400px 35px;
-      grid-template-rows: 30px 300px 300px 300px 300px 30px;
+     
     }
 
     .image1 {
@@ -127,4 +166,4 @@
     .content2 {
       font-size: 30px;
     }
-  }
+  } */
