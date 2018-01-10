@@ -28,7 +28,7 @@ class Home extends Component {
         latest_movie_title: response.data[0].movie_title,
         latest_title: response.data[0].title,
         latest_reviewer: response.data[0].full_name,
-        latest_poster_url: response.data[0].url
+        latest_poster_url: response.data[0].art_url
       })
     }).catch(err => console.log('Failed to get review info', err))
 
@@ -78,12 +78,17 @@ class Home extends Component {
               </div>
             </Link>
             {/* */}
-            <Link to='/list/movies' className='item item3'>
-              <p className='content1'>Browse</p>
-            </Link>
+            <div className='item item3'>
+              <Link to='/list/movies' className='browse-grid'>Browse Movie Reviews</Link>
+              <Link to='/list/TVshows' className='browse-grid'>Browse TV shows Reviews</Link>
+              <Link to='/list/anime' className='browse-grid'>Browse Anime Reviews</Link>
+              <Link to='/list/videogames' className='browse-grid'>Browse Video Games Reviews</Link>
+            </div>
             {/* */}
             <a href={process.env.REACT_APP_LOGIN}> <img src={reel} alt='login' className="filmReel" /> </a>
           
+            <h4 className="end"> </h4>
+            <h6 className="end">(Work in progress)</h6>
         </div>
       </div>
     );

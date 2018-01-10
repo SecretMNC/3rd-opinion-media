@@ -20,9 +20,25 @@ a, .links {
     color: inherit;
 }
 
-@media (min-width:700px) {
+.links {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.links:hover {
+    color: black;
+}
+
+.title {
+    position: absolute;
+    right: 46.8%;
+}
+
+@media (min-width:1200px) {
     .navbar {
       font-weight: 700;
       font-size: 20px
     }
+
+
 }

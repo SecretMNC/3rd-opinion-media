@@ -1,5 +1,5 @@
 .master {
-    background: #303030;
+    background: linear-gradient(to bottom right, #303030, rgb(12, 12, 12));
     color: white;
     text-shadow: 1px 1px 5px black;
     height: 100%;
@@ -10,9 +10,11 @@
 }
 
 .review-container {
-    display: grid;
-    grid-template-columns: 50px auto 50px;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    /* grid-template-columns: 50px auto 50px;
+    grid-template-rows: auto; */
     align-content: center;
     justify-content: center;
     text-align: center;
@@ -21,26 +23,30 @@
 }
 
 .title {
-    grid-column: 2/3;
-    align-items: center;
+    /* grid-column: 2/3; */
+    /* align-items: center; */
+}
+
+h1 {
+    text-decoration: none;
 }
 
 .rating {
-    grid-column: 2/3;
+    /* grid-column: 2/3; */
     font-size: 40px;
     color: gold;
     font-family: 'Rozha One', Serif;
 }
 
 .poster {
-    grid-column: 2/3;
-    align-self: center;
-    justify-self: center;
+    /* grid-column: 2/3; */
+    /* align-self: center; */
+    /* justify-self: center; */
     padding: 15px;
 }
 
 .review {
-    grid-column: 2/3;
+    /* grid-column: 2/3; */
     align-self: center;
     text-align: left;
     width: 80vw;

@@ -9,7 +9,7 @@ export default class Input extends Component {
         super()
 
         this.state = {
-            user: '',
+            imageURL: 'https://buzz.tt/media/posters/1772/posters_2_1500.jpg',
             title: 'e.g. Geostorm is the worst movie ever! (max 84 characters)',
             mediaType: 'Movie',
             name: 'e.g. Geostorm',
@@ -19,9 +19,9 @@ export default class Input extends Component {
     };
 
 
-    updateUser(e) {
+    updateImageURL(e) {
         this.setState({
-            user: e.target.value
+            imageURL: e.target.value
         });
     };
 
@@ -56,14 +56,9 @@ export default class Input extends Component {
     };
 
     submit() {
-        axios.get(`/api/info/${this.state.name}`).then(response => {
-                
-
-            })
-        
-
+    
         axios.post(`/api/input/${this.state.mediaType}`, {
-            user: this.state.user,
+            imageURL: this.state.imageURL,
             title: this.state.title,
             mediaType: this.state.mediaType,
             name: this.state.name,
@@ -73,6 +68,8 @@ export default class Input extends Component {
         })
             .then(response => {
                 alert(`You have successfully submitted your review, ${this.state.title}!`);
+            }).catch(err => {
+                alert('The review was not submitted.  Either you are not an authorized user or there is a field unfilled. Please check all fields or log back in.')
             });
     };
 
@@ -84,23 +81,17 @@ export default class Input extends Component {
                 <div className='inputs'>
 
                     <h1>Submit your Review</h1>
-                    <h2>Step 1: What is your ID? e.g. 1</h2>
+                    <h2>Step 1: Copy/Paste a link to the poster/cover art of what you are reviewing.</h2>
                     <input type='text'
                         className='userBox'
-                        defaultValue={this.state.user}
-                        onChange={this.updateUser.bind(this)} />
-                    <ul className='idList'>ID guide:
-                    <li>Stephen Moore = 1</li>
-                        <li>Kevin Pett = 2</li>
-                        <li>Robby Moore = 3</li>
-                        <li>Kyle Zollinger = 4</li>
-                        <li>Emily Moore = 5</li>
-                        <li>Tyrone Johnson = 7</li>
-                    </ul>
+                        placeholder={this.state.imageURL}
+                        onChange={this.updateImageURL.bind(this)} />
+                    
+                    
                     <h2>Step 2: Title of your review </h2>
                     <input type='text'
                         className='titleBox'
-                        value={this.state.title}
+                        placeholder={this.state.title}
                         onChange={this.updateTitle.bind(this)} />
 
                     <h2>Step 3: What type of media are you reviewing?</h2>
@@ -112,16 +103,16 @@ export default class Input extends Component {
                     </select>
 
                     <h2>Step 4: What is the title of thing you are reviewing?</h2>
-                    <h2>***IMPORTANT*** use the exact, official spelling!</h2>
+                    <h2>Try to use the official spelling of the title.</h2>
                     <input type='text'
                         className='nameBox'
-                        value={this.state.name}
+                        placeholder={this.state.name}
                         onChange={this.updateName.bind(this)} />
 
                     <h2>Step 5: What rating out of 10 do you give it? e.g. 6.75</h2>
                     <input type='text'
                         className='ratingBox'
-                        value={this.state.rating}
+                        placeholder={this.state.rating}
                         onChange={this.updateRating.bind(this)} />
 
                     <h2>Step 6: </h2>

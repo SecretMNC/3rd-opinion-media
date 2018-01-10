@@ -6,16 +6,36 @@ import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
     render() {
-        return (
-            <MuiThemeProvider>
-                <div className="navbar">
+        let width = window.innerWidth;
+        if (width > 1199) {
+            return (
+                <MuiThemeProvider>
+                    <div className="navbar">
+                        <nav>
+                            <Link to='/list/movies' className='links'>Movies</Link>
+                            <Link to='/list/TVshows' className='links'>TV Shows</Link>
+                            <Link to='/list/anime' className='links'>Anime</Link>
+                            <Link to='/list/videogames' className='links'>Video Games</Link>
+                            <Link to='/Bios' className='links'>The Reviewers</Link>
+                        </nav>
+                        <Link to='/' className='title'><p>3rd Opinion Media</p></Link>
+                        <p className='welcome'>Welcome!</p>
 
-                    <HamburgerMenu />
-                    <Link to='/' className='title'><p>3rd Opinion Media</p></Link>
-                    <p className='welcome'>Welcome!</p>
+                    </div>
+                </MuiThemeProvider>
+            )
+        } else {
+            return (
+                <MuiThemeProvider>
+                    <div className="navbar">
 
-                </div>
-            </MuiThemeProvider>
-        )
+                        <HamburgerMenu />
+                        <Link to='/' className='title'><p>3rd Opinion Media</p></Link>
+                        <p className='welcome'>Welcome!</p>
+
+                    </div>
+                </MuiThemeProvider>
+            )
+        }
     }
 }

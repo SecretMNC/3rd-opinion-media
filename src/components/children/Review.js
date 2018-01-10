@@ -19,12 +19,12 @@ export default class Review extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get(`/api/getReview/${this.props.match.params.media}/${this.state.reviewName}/`).then(response => {
             this.setState({
                 rating: response.data[0].rating,
                 date: response.data[0].post_date,
-                posterUrl: response.data[0].url,
+                posterUrl: response.data[0].art_url,
                 reviewer: response.data[0].full_name,
                 review: response.data[0].review
             })
@@ -42,11 +42,11 @@ export default class Review extends Component {
                 <Navbar />
                 <div className='review-container'>
 
-                    <h1 className='title'>{this.state.reviewName}</h1>
-                    <h1 className='title'>{this.state.reviewer}</h1>
+                    <h1>{this.state.reviewName}</h1>
+                    <h1>By: {this.state.reviewer}</h1>
                     <h1 className='rating'>{this.state.rating}/10 </h1>
                     <img src={this.state.posterUrl} alt='' className='poster'/>
-                    <h1 className='title'>{date}</h1>
+                    <h1>{date}</h1>
                     {parsedReview}
                     <h1 className='title'> </h1>
                     <h1 className='title'> </h1>

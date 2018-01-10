@@ -23,7 +23,7 @@ h2 {
 
 .userBox {
     grid-column: 2/3;
-    width: 20px;
+    width: 350px;
     height: 15px;
     margin: 15px;
     justify-self: center;

@@ -40,7 +40,7 @@ passport.use(new Auth0Strategy({
         .then(user => {
 
             if (user[0]) {
-                return done(null, profile);
+                return done(null, user[0].id);
             } else {
                 db.create_user([
                     userData.name,
@@ -146,8 +146,8 @@ app.get('/api/reviews/:media/', (req, res) => {
         db.get_anime_reviews().then(response => {
             res.status(200).send(response)
         })
-    } else {
-        db.get_videogames_reviews().then(response => {
+    } else if (req.params.media === 'videogames') {
+        db.get_videogame_reviews().then(response => {
             res.status(200).send(response)
         })
     }
@@ -168,7 +168,7 @@ app.get('/api/getReview/:media/:review/', (req, res) => {
             res.status(200).send(response)
         })
     } else {
-        db.get_videogames_review([req.params.review]).then(response => {
+        db.get_videogame_review([req.params.review]).then(response => {
             res.status(200).send(response)
         })
     }
@@ -185,13 +185,15 @@ app.post('/api/postImage/', (req, res) => {
 
 app.post('/api/input/Movie', (req, res) => {
     const db = app.get('db')
+    // console.log(req.user.id)
     db.post_movie_review([
-        req.body.user,
+        req.user.id,
         req.body.title,
         req.body.review,
         req.body.sample,
         req.body.name,
-        req.body.rating
+        req.body.rating,
+        req.body.imageURL
     ]).then(response => {
         res.status(200).send(response)
     })
@@ -200,12 +202,13 @@ app.post('/api/input/Movie', (req, res) => {
 app.post('/api/input/TVshow', (req, res) => {
     const db = app.get('db')
     db.post_tvshow_review([
-        req.body.user,
+        req.user.id,
         req.body.title,
         req.body.review,
         req.body.sample,
         req.body.name,
-        req.body.rating
+        req.body.rating,
+        req.body.imageURL
     ]).then(response => {
         res.status(200).send(response)
     })
@@ -214,12 +217,13 @@ app.post('/api/input/TVshow', (req, res) => {
 app.post('/api/input/Anime', (req, res) => {
     const db = app.get('db')
     db.post_anime_review([
-        req.body.user,
+        req.user.id,
         req.body.title,
         req.body.review,
         req.body.sample,
         req.body.name,
-        req.body.rating
+        req.body.rating,
+        req.body.imageURL
     ]).then(response => {
         res.status(200).send(response)
     })
@@ -228,21 +232,22 @@ app.post('/api/input/Anime', (req, res) => {
 app.post('/api/input/Videogame', (req, res) => {
     const db = app.get('db')
     db.post_videogame_review([
-        req.body.user,
+        req.user.id,
         req.body.title,
         req.body.review,
         req.body.sample,
         req.body.name,
-        req.body.rating
+        req.body.rating,
+        req.body.imageURL
     ]).then(response => {
         res.status(200).send(response)
     })
 });
 
-const path = require('path')
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+// const path = require('path')
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+// });
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));

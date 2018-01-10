@@ -16,7 +16,7 @@ export default class Lists extends Component {
         }
     };
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get(`/api/reviews/${this.state.mediaType}/`).then(response => {
             // console.log(response)
             this.setState({
@@ -46,7 +46,7 @@ export default class Lists extends Component {
                         <h2> {item.title} </h2>
                         <h3 className='sampleText'> {item.sample_text} </h3>
                         <h4> {date} </h4>
-                        <img src={item.url} alt={`${item.movie_title}`} className='poster' />
+                        <img src={item.art_url} alt={`${item.movie_title}`} className='poster' />
                     </Link>
                 </div>
             )
